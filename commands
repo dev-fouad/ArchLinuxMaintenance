@@ -1,0 +1,32 @@
+# Check systemd failed services
+systemctl --failed
+
+# Log files check
+sudo journalctl -p 3 -xb
+
+# Update
+sudo pacman -Syu
+
+#paru Update
+paru
+
+#Delete Pacman Cache
+sudo pacman -Scc
+
+# Delete Yay Cache
+paru -Scc
+
+# Delete unwanted dependencies
+paru -Yc
+
+# Check Orphan packages
+pacman -Qtdq
+
+# Remove Orphan packages
+sudo pacman -Rns $(pacman -Qtdq)
+
+# Clean the Cache
+rm -rf .cache/*
+
+# Clean the journal
+sudo journalctl --vacuum-time=2weeks
